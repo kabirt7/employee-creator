@@ -76,6 +76,10 @@ return (
 <button onClick={() => dispatch(addTopping('pepperoni))}
 ```
 
+- context doesn't inherently enfore uni-directional data flow while RR does
+- this just means that when child componenents want to change state they can't do it directly but will notify the Redux store through dispatching an action. The Store will then update the state using reducers and pass down to children through props. Each reducer handles a specific slice of the application state. It will check whether a re-render is necessary instead of automatically doing it like the useContext hook.
+- note that useState hooks' states will operate independently to that of Redux Store state
+  
 ## Planning 
 
 - API has: create employee, list of existing employees, delete employee
