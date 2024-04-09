@@ -22,6 +22,9 @@ Feel free to use your favorite middleware.
 Add some basic validations on the form like required and max length validations.
 The site should be responsive.
 
+- API has: create employee, list of existing employees, delete employee
+- Front-end has: View Employee List (with delete option), Add Employee Form. Routed.
+
 ## Redux
 
 - React Redux seems to function similarly to useContext React Hook. The application will still be built in TSX with vite. I think I'll need to use Middleware with RR?
@@ -82,6 +85,11 @@ return (
   
 ## Planning 
 
-- API has: create employee, list of existing employees, delete employee
-- Front-end has: View Employee List (with delete option), Add Employee Form. Routed.
+In this project, I will be focussing on: 
+- ensuring my Components are resuable and that they do not handle data/logic themselves (this should be handled by the parent Containers).
+- Using eNums for states that determine rendering. Extensive error handling for the forms.
+- Implementing React Redux instead of the useContext Hook.
+- Extensive error handling on the back-end.
+- Testing on both sides.
+- Logical relationships between tables/columns in mySQL
 
