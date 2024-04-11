@@ -1,0 +1,14 @@
+.input {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  p {
+    align-self: flex-start;
+  }
+
+  input {
+    width: 100%;
+  }
+}

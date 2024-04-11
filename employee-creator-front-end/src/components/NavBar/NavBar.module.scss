@@ -1,0 +1,24 @@
+.navBar {
+  position: fixed;
+  height: 100vh;
+  width: 12vw;
+  background-color: black;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 2;
+
+  &__title {
+    display: flex;
+    height: 10vh;
+    align-items: center;
+    justify-content: center;
+
+    gap: 1vw;
+
+    h3 {
+      width: 80%;
+    }
+  }
+}

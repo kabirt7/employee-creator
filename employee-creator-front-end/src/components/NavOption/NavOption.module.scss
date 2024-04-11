@@ -1,0 +1,23 @@
+.navOption {
+  display: flex;
+  height: 5vh;
+  width: 80%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 0.5vw;
+  gap: 0.5vw;
+
+  img {
+    width: 1vw;
+    height: 1vw;
+  }
+
+  p {
+    font-size: 1.2vw;
+  }
+}
+
+.navOption:hover {
+  background-color: antiquewhite;
+}
