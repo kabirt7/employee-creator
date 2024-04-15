@@ -93,3 +93,24 @@ In this project, I will be focussing on:
 - Testing on both sides.
 - Logical relationships between tables/columns in mySQL
 
+## Change Log
+
+### 10th April
+- set up front-end and back-end files
+- imported the dependencies: Spring Web, Validation I/O, Spring Testing, Spring Data JPA, MySQL Driver, Spring Devtools.
+- finalised planning (file in root folder)
+
+### 11th April
+- Fleshed out front-end: basic form of all components complete, except the form which is almost done (routes added)
+- Added the Employee entity including its eNums to the back-end
+
+### 12th April
+- iniialised the files for front and back end - made all components and classes
+- finished off the planning
+
+### 14th April
+- finished out hooking up react-hook-form with my project - ready to be integrated with back-end
+
+### 15th April
+- Completed the Service, Controller & UpdateEmployeDTO classes.
+- Completed the error handling package by adding NotFoundException, ServiceValidationException, GlobalExceptionHandler
