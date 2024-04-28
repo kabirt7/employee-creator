@@ -23,10 +23,13 @@ public class Employee {
 	private String firstName;
 	
 	@Column
-	private String middleName;
+	private String lastName;
 	
 	@Column
-	private String lastName;
+	private String jobTitle;
+	
+	@Column 
+	private String photoLink;
 	
 	@Column
 	private String email;
@@ -49,7 +52,7 @@ public class Employee {
     private WorkType workType;
 	
 	@Column
-	private byte hoursPerWeek;
+	private Integer hoursPerWeek;
 	
 	public enum ContractType {
 		PERMANENT,
@@ -60,5 +63,102 @@ public class Employee {
 		FULL_TIME,
 		PART_TIME
 	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public String getPhotoLink() {
+		return photoLink;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public Long getMobileNumber() {
+		return mobileNumber;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public ContractType getContractType() {
+		return contractType;
+	}
+
+	public LocalDate getStartDate() {
+		return startDate;
+	}
+
+	public WorkType getWorkType() {
+		return workType;
+	}
+
+	public Integer getHoursPerWeek() {
+		return hoursPerWeek;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public void setPhotoLink(String photoLink) {
+		this.photoLink = photoLink;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public void setMobileNumber(Long mobileNumber) {
+		this.mobileNumber = mobileNumber;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public void setContractType(ContractType contractType) {
+		this.contractType = contractType;
+	}
+
+	public void setStartDate(LocalDate startDate) {
+		this.startDate = startDate;
+	}
+
+	public void setWorkType(WorkType workType) {
+		this.workType = workType;
+	}
+
+	public void setHoursPerWeek(Integer hoursPerWeek) {
+		this.hoursPerWeek = hoursPerWeek;
+	}
+	
+	public String getJobTitle() {
+		return jobTitle;
+	}
+	
+	public void setJobTitle(String jobTitle) {
+		this.jobTitle = jobTitle;
+	}
+
     
 }

@@ -8,17 +8,27 @@
   flex-direction: column;
   align-items: center;
   z-index: 2;
+  gap: 1.5vh;
 
   &__title {
     display: flex;
     height: 10vh;
     align-items: center;
     justify-content: center;
-
     gap: 1vw;
+
+    img {
+      width: 2vw;
+      height: 2vw;
+    }
 
     h3 {
       width: 80%;
+      font-size: 1.5vw;
     }
   }
+}
+
+.navBar > :nth-child(2) {
+  margin-top: -2vh;
 }

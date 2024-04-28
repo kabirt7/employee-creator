@@ -1,18 +1,22 @@
 .employee {
   min-width: 30%;
+  position: relative;
   flex: 1;
   height: 60vh;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-evenly;
   background-color: rgb(255, 255, 255);
   flex-direction: column;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 1vw;
+  cursor: pointer;
 
   img {
     width: 12vw;
     height: 12vw;
+    object-fit: cover;
+    object-position: top;
   }
 
   &__headerBox {
@@ -51,6 +55,12 @@
       width: 100%;
       display: flex;
       justify-content: space-between;
+
+      &__dateHired {
+        display: flex;
+        align-items: flex-end;
+        flex-direction: column;
+      }
     }
 
     &__bottomRow {
@@ -62,6 +72,25 @@
 
   &__last {
     flex: 0;
+    min-width: 31.75%;
+  }
+
+  &__editIcon {
+    position: absolute;
+    top: 1vw;
+    right: 1.2vw;
+    height: 1.2vw;
+    color: rgb(62, 143, 249);
+    z-index: 100;
+
+    &__image {
+      width: 1.2vw;
+      height: 1.2vw;
+    }
+  }
+
+  &__editIcon:hover {
+    color: black;
   }
 }
 

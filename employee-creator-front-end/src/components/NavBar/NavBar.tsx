@@ -1,20 +1,21 @@
-import React from "react";
 import styles from "./NavBar.module.scss";
-import logo from "../../assets/logo.jpeg";
 import NavOption from "../NavOption/NavOption";
+import logoImage from "../../assets/empLogo__white.png";
+import { faColumns, faAdd } from "@fortawesome/free-solid-svg-icons";
 
 const NavBar = () => {
   return (
     <section className={styles.navBar}>
       <div className={styles.navBar__title}>
-        <img src="dsfsdff.jpg" />
+        <img src={logoImage} />
         <h3>EMPLO</h3>
       </div>
-      <NavOption>Title</NavOption>
-      <NavOption>Title</NavOption>
-      <NavOption>Title</NavOption>
-      <NavOption>Title</NavOption>
-      <NavOption>Title</NavOption>
+      <NavOption to="/" icon={faColumns}>
+        Dashboard
+      </NavOption>
+      <NavOption to="/add" icon={faAdd}>
+        Add
+      </NavOption>
     </section>
   );
 };

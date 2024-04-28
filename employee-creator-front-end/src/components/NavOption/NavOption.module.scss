@@ -7,17 +7,25 @@
   align-items: center;
   padding-left: 0.5vw;
   gap: 0.5vw;
+  text-decoration: none;
+  background-color: white;
+  border-radius: 0.9vh;
 
-  img {
-    width: 1vw;
-    height: 1vw;
+  &__icon {
+    color: black;
+    width: 1.2vw;
+    height: 1.2vw;
   }
 
   p {
     font-size: 1.2vw;
+    color: black;
+    text-decoration: none;
+    text-decoration-style: none;
+    text-decoration-thickness: 0;
   }
 }
 
 .navOption:hover {
-  background-color: antiquewhite;
+  background-color: rgb(233, 249, 255);
 }

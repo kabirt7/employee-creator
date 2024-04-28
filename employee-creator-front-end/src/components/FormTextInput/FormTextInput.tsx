@@ -1,16 +1,22 @@
-import { useForm } from "react-hook-form";
 import styles from "./FormTextInput.module.scss";
 
 interface FormTextInputProps {
   inputField: string;
+  inputTitle: string;
+  inputType?: string;
+  register: Function;
 }
 
-const FormTextInput = ({ inputField }: FormTextInputProps) => {
-  const { register } = useForm<{ [key: string]: string }>();
+const FormTextInput = ({
+  inputField,
+  inputTitle,
+  inputType = "text",
+  register = Function,
+}: FormTextInputProps) => {
   return (
     <div className={styles.input}>
-      <p>{inputField}</p>
-      <input type="text" {...register(inputField)} />
+      <label>{inputTitle}</label>
+      <input type={inputType} {...register(inputField)} />
     </div>
   );
 };
