@@ -3,25 +3,23 @@ import styles from "./EmployeeComponent.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setEmployeeModal } from "../../features/modalSlice";
 
 type EmployeeComponentProps = {
   lastEmployee?: boolean;
   employee: Employee;
-  click: (employee: Employee) => void;
 };
 
 const EmployeeComponent = ({
   employee,
   lastEmployee,
-  click,
 }: EmployeeComponentProps) => {
+  const dispatch = useDispatch();
+
   const handleClick = (event: React.MouseEvent<Element, MouseEvent>) => {
     event.preventDefault();
-    console.log(event.target);
-    const target = event.target as HTMLButtonElement;
-    console.log("Clicked element ID:", target);
-
-    click(employee);
+    dispatch(setEmployeeModal(employee));
   };
 
   const editHandleClick = (event: React.MouseEvent<Element, MouseEvent>) => {
@@ -46,7 +44,7 @@ const EmployeeComponent = ({
         <div className={styles.employee__infoBox__topRow}>
           <div className={styles.employee__infoBox__topRow__department}>
             <p className={styles.infoTitle}>Department</p>
-            <p>Marketing</p>
+            <p>{employee.department}</p>
           </div>
           <div className={styles.employee__infoBox__topRow__dateHired}>
             <p className={styles.infoTitle}>Date Hired</p>

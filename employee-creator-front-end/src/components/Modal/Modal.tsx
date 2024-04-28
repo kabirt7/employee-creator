@@ -34,16 +34,16 @@ const Modal = ({ data, onClose }: ModalProps) => {
             <div className={styles.modal__infoText}>{data.jobTitle}</div>
           </div>
           <div className={styles.infoBlock}>
+            <label className={styles.modal__label}>Department:</label>
+            <div className={styles.modal__infoText}>{data.department}</div>
+          </div>
+          <div className={styles.infoBlock}>
             <label className={styles.modal__label}>Address:</label>
             <div className={styles.modal__infoText}>{data.address}</div>
           </div>
           <div className={styles.infoBlock}>
             <label className={styles.modal__label}>Email:</label>
             <div className={styles.modal__infoText}>{data.email}</div>
-          </div>
-          <div className={styles.infoBlock}>
-            <label className={styles.modal__label}>Photo Link:</label>
-            <div className={styles.modal__infoText}>{data.photoLink}</div>
           </div>
           <div className={styles.infoBlock}>
             <label className={styles.modal__label}>Mobile Number:</label>

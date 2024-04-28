@@ -5,13 +5,11 @@ import { Employee } from "../../services/interfaces";
 
 interface ViewEmployeesComponentProps {
   setPageTitle: Function;
-  setEmployeeModal: Function;
   employeeList: Employee[] | null;
 }
 
 const ViewEmployeesComponent = ({
   setPageTitle,
-  setEmployeeModal,
   employeeList,
 }: ViewEmployeesComponentProps) => {
   useEffect(() => {
@@ -26,10 +24,6 @@ const ViewEmployeesComponent = ({
             <EmployeeComponent
               key={index}
               employee={employee}
-              click={(selectedEmployee) => {
-                console.log(selectedEmployee);
-                setEmployeeModal(selectedEmployee);
-              }}
               lastEmployee={
                 employeeList.length % 3 === 2
                   ? index === employeeList.length - 1 ||

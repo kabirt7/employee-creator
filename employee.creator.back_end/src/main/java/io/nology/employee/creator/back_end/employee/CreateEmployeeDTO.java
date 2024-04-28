@@ -22,8 +22,11 @@ public class CreateEmployeeDTO {
 	private String jobTitle;
 	
 	@NotBlank
-	private String email;
+	private String department;
 	
+	@NotBlank
+	private String email;
+
 	@NotBlank
 	private String photoLink;
 	
@@ -135,5 +138,12 @@ public class CreateEmployeeDTO {
 		this.jobTitle = jobTitle;
 	}
 
+	public String getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(String department) {
+		this.department = department;
+	}
 	
 }

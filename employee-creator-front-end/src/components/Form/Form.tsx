@@ -16,6 +16,7 @@ const schema = z.object({
   firstName: z.string().min(1),
   lastName: z.string().min(1),
   jobTitle: z.string().min(1),
+  department: z.string().max(15),
   address: z.string().min(1),
   email: z.string().email(),
   mobileNumber: z.string().min(10).max(10),
@@ -85,6 +86,11 @@ const Form: React.FC<FormProps> = ({
           <FormTextInput
             inputField="jobTitle"
             inputTitle="Job Title"
+            register={register}
+          />
+          <FormTextInput
+            inputField="department"
+            inputTitle="Department"
             register={register}
           />
           <FormTextInput

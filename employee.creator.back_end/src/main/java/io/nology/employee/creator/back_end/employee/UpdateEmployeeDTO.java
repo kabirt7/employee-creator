@@ -18,6 +18,9 @@ public class UpdateEmployeeDTO {
 	private String jobTitle;
 	
 	@NotBlank
+	private String department;
+	
+	@NotBlank
 	private String email;
 	
 	@NotBlank
@@ -25,7 +28,8 @@ public class UpdateEmployeeDTO {
 	
 	@NotNull
 	private Long mobileNumber;
-	
+
+
 	@NotBlank
 	private String address;
 	
@@ -118,4 +122,11 @@ public class UpdateEmployeeDTO {
 		this.hoursPerWeek = hoursPerWeek;
 	}
 
+	public String getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(String department) {
+		this.department = department;
+	}
 }

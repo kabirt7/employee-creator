@@ -1,5 +1,6 @@
 import axios from "axios";
 import { Employee } from "./interfaces";
+import { ContractType } from "./enums";
 
 const API_URL = "http://localhost:8080/employees";
 
@@ -42,6 +43,7 @@ export const addEmployee = async (employee: Employee): Promise<Employee> => {
         firstName: employee.firstName,
         lastName: employee.lastName,
         jobTitle: employee.jobTitle,
+        department: employee.department,
         photoLink: employee.photoLink,
         email: employee.email,
         mobileNumber: mobileNumber,
@@ -74,6 +76,7 @@ export const updateEmployee = async (
       firstName: employee.firstName,
       lastName: employee.lastName,
       jobTitle: employee.jobTitle,
+      department: employee.department,
       photoLink: employee.photoLink,
       email: employee.email,
       mobileNumber: parseInt(employee.mobileNumber, 10),

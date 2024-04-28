@@ -28,6 +28,9 @@ public class Employee {
 	@Column
 	private String jobTitle;
 	
+	@Column
+	private String department;
+
 	@Column 
 	private String photoLink;
 	
@@ -160,5 +163,11 @@ public class Employee {
 		this.jobTitle = jobTitle;
 	}
 
-    
+	public String getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(String department) {
+		this.department = department;
+	}
 }

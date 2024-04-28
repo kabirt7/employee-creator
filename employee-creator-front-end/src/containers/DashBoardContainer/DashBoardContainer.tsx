@@ -12,12 +12,19 @@ import {
 } from "../../services/logic";
 import { FormType } from "../../services/enums";
 import styles from "./DashBoardContainer.module.scss";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../store/store";
+import { clearEmployeeModal } from "../../features/modalSlice";
 
 const DashBoardContainer = () => {
   const [pageTitle, setPageTitle] = useState("Dashboard");
-  const [employeeModal, setEmployeeModal] = useState<Employee | null>(null);
   const [employeeList, setEmployeeList] = useState<Employee[]>([]);
   const navigate = useNavigate();
+
+  const employeeModal = useSelector(
+    (state: RootState) => state.modal.employeeModal
+  );
+  const dispatch = useDispatch();
 
   const addSubmit: (data: Employee) => void = async (data) => {
     try {
@@ -78,7 +85,7 @@ const DashBoardContainer = () => {
   }, [ViewEmployeesComponent]);
 
   const onClose = () => {
-    setEmployeeModal(null);
+    dispatch(clearEmployeeModal());
   };
 
   return (
@@ -91,7 +98,6 @@ const DashBoardContainer = () => {
             element={
               <ViewEmployeesComponent
                 setPageTitle={setPageTitle}
-                setEmployeeModal={setEmployeeModal}
                 employeeList={employeeList}
               />
             }

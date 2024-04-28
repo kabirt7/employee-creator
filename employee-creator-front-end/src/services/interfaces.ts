@@ -4,6 +4,7 @@ export interface Employee {
   id: Number;
   firstName: string;
   jobTitle: string;
+  department: string;
   lastName: string;
   photoLink: string;
   email: string;
