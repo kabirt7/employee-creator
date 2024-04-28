@@ -15,6 +15,7 @@ import styles from "./DashBoardContainer.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import { clearEmployeeModal } from "../../features/modalSlice";
+import { setToast } from "../../features/toastSlice";
 
 const DashBoardContainer = () => {
   const [pageTitle, setPageTitle] = useState("Dashboard");
@@ -31,11 +32,11 @@ const DashBoardContainer = () => {
       const response = await addEmployee(data);
       console.log("Employee added:", response);
       setEmployeeList((prev) => [...prev, response]);
-      alert("Employee added successfully!");
+      dispatch(setToast("Employee added successfully!"));
       navigate("/");
     } catch (error) {
       console.error("Failed to add employee", error);
-      alert("Failed to add employee.");
+      dispatch(setToast("Failed to add employee."));
     }
   };
 
@@ -51,11 +52,11 @@ const DashBoardContainer = () => {
       setEmployeeList((prev) =>
         prev.map((emp) => (emp.id === employeeId ? response : emp))
       );
-      alert("Employee updated successfully!");
+      dispatch(setToast("Employee updated successfully!"));
       navigate("/");
     } catch (error) {
       console.error("Failed to update employee", error);
-      alert("Failed to update employee.");
+      dispatch(setToast("Failed to update employee."));
     }
   };
 
@@ -63,11 +64,11 @@ const DashBoardContainer = () => {
     try {
       await deleteEmployee(id);
       setEmployeeList(employeeList.filter((emp) => emp.id.toString() !== id)); // Update
-      alert("Employee deleted successfully!");
+      dispatch(setToast("Employee deleted successfully!"));
       navigate("/");
     } catch (error) {
       console.error("Failed to delete employee", error);
-      alert("Failed to delete employee.");
+      dispatch(setToast("Failed to delete employee."));
     }
   };
 
