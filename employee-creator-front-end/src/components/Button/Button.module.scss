@@ -3,9 +3,17 @@
   border: none;
   border-radius: 1vw;
   font-size: 2vh;
-  background-color: rgb(242, 246, 250);
+  background-color: rgb(245, 245, 245);
 }
 
 .button:hover {
   background-color: rgb(232, 241, 250);
+}
+
+.rightButton {
+  float: right;
+}
+
+.centredButton {
+  align-self: center;
 }

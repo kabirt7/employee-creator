@@ -8,6 +8,8 @@ const Toast: React.FC = () => {
   const message = useSelector((state: RootState) => state.toast.message);
   const dispatch = useDispatch();
 
+  // add close button
+
   useEffect(() => {
     if (message) {
       const timer = setTimeout(() => {

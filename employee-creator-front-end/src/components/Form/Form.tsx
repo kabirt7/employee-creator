@@ -13,18 +13,26 @@ import { ContractType, WorkType, FormType } from "../../services/enums";
 import logoImage from "../../assets/empLogo.svg";
 
 const schema = z.object({
-  firstName: z.string().min(1),
-  lastName: z.string().min(1),
-  jobTitle: z.string().min(1),
-  department: z.string().max(15),
-  address: z.string().min(1),
-  email: z.string().email(),
-  mobileNumber: z.string().min(10).max(10),
-  startDate: z.string().min(10).max(10),
-  photoLink: z.string().min(1),
-  hoursPerWeek: z.string().regex(/^\d+$/).min(1),
-  contractType: z.string().min(1),
-  workType: z.string().min(1),
+  firstName: z.string().min(1, "First name is required"),
+  lastName: z.string().min(1, "Last name is required"),
+  jobTitle: z.string().min(1, "Job title is required"),
+  department: z
+    .string()
+    .max(15, "Department name too long")
+    .min(1, "Department name is required"),
+  address: z.string().min(1, "Address is required"),
+  email: z.string().email("Invalid email"),
+  mobileNumber: z
+    .string()
+    .regex(/^\d*$/, "Only digits allowed in mobile number"),
+  startDate: z
+    .string()
+    .min(10, "Start date must be complete")
+    .max(10, "Start date must be complete"),
+  photoLink: z.string().min(1, "Photo link is required"),
+  hoursPerWeek: z.string().regex(/^\d+$/, "Hours per week should be numeric"),
+  contractType: z.string().min(1, "Contract type is required"),
+  workType: z.string().min(1, "Work type is required"),
 });
 
 interface FormProps {
@@ -45,7 +53,12 @@ const Form: React.FC<FormProps> = ({
   const { id } = useParams<{ id?: string | undefined }>();
   const employeeId = id ? parseInt(id, 10) : undefined;
 
-  const { handleSubmit, register, reset } = useForm<Employee>({
+  const {
+    handleSubmit,
+    register,
+    reset,
+    formState: { errors },
+  } = useForm<Employee>({
     resolver: zodResolver(schema),
   });
 
@@ -56,12 +69,14 @@ const Form: React.FC<FormProps> = ({
     if (type === FormType.EDIT && id && employeeList) {
       const employeeToEdit = employeeList.find((emp) => emp.id === employeeId);
       if (employeeToEdit) {
+        console.log(employeeToEdit);
         reset(employeeToEdit);
       }
     }
   }, [type, id, employeeList, setPageTitle, reset]);
 
   const submitHandler: SubmitHandler<Employee> = (data) => {
+    console.log(data);
     onSubmit(data, id);
   };
 
@@ -73,49 +88,82 @@ const Form: React.FC<FormProps> = ({
       >
         <div className={styles.form__wrap}>
           <img src={logoImage} alt="logo" />
+
           <FormTextInput
             inputField="firstName"
             inputTitle="First Name"
             register={register}
           />
+          {errors.firstName && (
+            <span className={styles.error}>{errors.firstName.message}</span>
+          )}
           <FormTextInput
             inputField="lastName"
             inputTitle="Last Name"
             register={register}
           />
+          {errors.lastName && (
+            <span className={styles.error}>{errors.lastName.message}</span>
+          )}
           <FormTextInput
             inputField="jobTitle"
             inputTitle="Job Title"
             register={register}
           />
+          {errors.jobTitle && (
+            <span className={styles.error}>{errors.jobTitle.message}</span>
+          )}
           <FormTextInput
             inputField="department"
             inputTitle="Department"
             register={register}
           />
+          {errors.department && (
+            <span className={styles.error}>{errors.department.message}</span>
+          )}
           <FormTextInput
             inputField="address"
             inputTitle="Address"
             register={register}
           />
+          {errors.address && (
+            <span className={styles.error}>{errors.address.message}</span>
+          )}
           <FormTextInput
             inputField="email"
             inputTitle="Email"
             register={register}
           />
+          {errors.email && (
+            <span className={styles.error}>{errors.email.message}</span>
+          )}
           <FormTextInput
             inputField="photoLink"
             inputTitle="Photo Link"
             register={register}
           />
+          {errors.photoLink && (
+            <span className={styles.error}>{errors.photoLink.message}</span>
+          )}
           <FormTextInput
             inputField="mobileNumber"
             inputTitle="Mobile"
             inputType="number"
             register={register}
           />
-          {type == FormType.ADD && (
-            <DateInput inputProps={register("startDate")} label="Start Date" />
+          {errors.mobileNumber && (
+            <span className={styles.error}>{errors.mobileNumber.message}</span>
+          )}
+          {type === FormType.ADD && (
+            <>
+              <DateInput
+                inputProps={register("startDate")}
+                label="Start Date"
+              />
+              {errors.startDate && (
+                <span className={styles.error}>{errors.startDate.message}</span>
+              )}
+            </>
           )}
           <FormTextInput
             inputField="hoursPerWeek"
@@ -123,24 +171,37 @@ const Form: React.FC<FormProps> = ({
             inputType="number"
             register={register}
           />
+          {errors.hoursPerWeek && (
+            <span className={styles.error}>{errors.hoursPerWeek.message}</span>
+          )}
           <FormSelectInput
             type={ContractType}
             inputName="contractType"
             inputTitle="Contract Type"
             register={register}
           />
+          {errors.contractType && (
+            <span className={styles.error}>{errors.contractType.message}</span>
+          )}
           <FormSelectInput
             type={WorkType}
             inputName="workType"
             inputTitle="Work Type"
             register={register}
           />
-          <Button type="submit">
+          {errors.workType && (
+            <span className={styles.error}>{errors.workType.message}</span>
+          )}
+          <Button type="submit" className="centredButton">
             {type === FormType.EDIT ? "Save Changes" : "Add Employee"}
           </Button>
 
           {type === FormType.EDIT && deleteEmployee && id && (
-            <Button type="button" onClick={() => deleteEmployee(id)}>
+            <Button
+              type="button"
+              className="centredButton"
+              onClick={() => deleteEmployee(id)}
+            >
               Delete Employee
             </Button>
           )}

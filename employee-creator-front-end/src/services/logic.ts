@@ -1,6 +1,5 @@
 import axios from "axios";
 import { Employee } from "./interfaces";
-import { ContractType } from "./enums";
 
 const API_URL = "http://localhost:8080/employees";
 
@@ -85,6 +84,7 @@ export const updateEmployee = async (
       contractType: employee.contractType,
       workType: employee.workType,
     });
+
     return response.data;
   } catch (error) {
     console.error("Error updating employee:", error);

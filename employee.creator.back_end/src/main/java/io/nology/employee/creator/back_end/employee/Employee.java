@@ -49,6 +49,7 @@ public class Employee {
 	
 	@Column
     private LocalDate startDate;
+	// look into date type from jpa
 	
 	@Enumerated(EnumType.STRING)
 	@Column

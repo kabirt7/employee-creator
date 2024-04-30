@@ -16,10 +16,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import { clearEmployeeModal } from "../../features/modalSlice";
 import { setToast } from "../../features/toastSlice";
+import Button from "../../components/Button/Button";
 
 const DashBoardContainer = () => {
   const [pageTitle, setPageTitle] = useState("Dashboard");
   const [employeeList, setEmployeeList] = useState<Employee[]>([]);
+  const [originalList, setOriginalList] = useState<Employee[]>([]);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [sortedAndFilteredEmployees, setSortedAndFilteredEmployees] = useState<
+    Employee[]
+  >([]);
+
   const navigate = useNavigate();
 
   const employeeModal = useSelector(
@@ -32,6 +39,7 @@ const DashBoardContainer = () => {
       const response = await addEmployee(data);
       console.log("Employee added:", response);
       setEmployeeList((prev) => [...prev, response]);
+      setOriginalList((prev) => [...prev, response]);
       dispatch(setToast("Employee added successfully!"));
       navigate("/");
     } catch (error) {
@@ -50,6 +58,9 @@ const DashBoardContainer = () => {
       const employeeId = id ? parseInt(id, 10) : undefined;
       console.log("Employee updated:", response);
       setEmployeeList((prev) =>
+        prev.map((emp) => (emp.id === employeeId ? response : emp))
+      );
+      setOriginalList((prev) =>
         prev.map((emp) => (emp.id === employeeId ? response : emp))
       );
       dispatch(setToast("Employee updated successfully!"));
@@ -76,22 +87,94 @@ const DashBoardContainer = () => {
     const fetchEmployees = async () => {
       try {
         const employees = await getAllEmployees();
-        setEmployeeList(employees);
+        const transformedEmployees = employees.map((employee) => ({
+          ...employee,
+          hoursPerWeek: employee.hoursPerWeek.toString(),
+          mobileNumber: employee.mobileNumber.toString(),
+        }));
+        setEmployeeList(transformedEmployees);
+        setOriginalList(transformedEmployees);
       } catch (error) {
         console.error("Failed to fetch employees", error);
       }
     };
 
     fetchEmployees();
-  }, [ViewEmployeesComponent]);
+  }, [employeeList.length]);
 
   const onClose = () => {
     dispatch(clearEmployeeModal());
   };
 
+  const [sortType, setSortType] = useState<"Name" | "Date" | "Sort">("Sort");
+
+  const sortEmployees = () => {
+    if (sortType === "Sort") {
+      setSortType("Name");
+    } else if (sortType === "Name") {
+      setSortType("Date");
+    } else if (sortType === "Date") {
+      setSortType("Sort");
+    }
+  };
+
+  const bannerClass = `${styles.banner__wrap} ${
+    pageTitle !== "Dashboard" ? styles.banner__wrap__centred : ""
+  }`.trim();
+
+  const handleSearchChange = (event: any) => {
+    setSearchQuery(event.target.value);
+  };
+
+  const applySorting = (list: Employee[]) => {
+    if (sortType === "Name") {
+      return [...list].sort((a, b) => a.firstName.localeCompare(b.firstName));
+    } else if (sortType === "Date") {
+      return [...list].sort((a, b) => a.startDate.localeCompare(b.startDate));
+    }
+    return list;
+  };
+
+  useEffect(() => {
+    const lowerCaseQuery = searchQuery.toLowerCase();
+    const filtered = originalList.filter(
+      (employee) =>
+        employee.firstName.toLowerCase().includes(lowerCaseQuery) ||
+        employee.lastName.toLowerCase().includes(lowerCaseQuery) ||
+        employee.email.toLowerCase().includes(lowerCaseQuery) ||
+        employee.department.toLowerCase().includes(lowerCaseQuery) ||
+        employee.jobTitle.toLowerCase().includes(lowerCaseQuery)
+    );
+
+    const sorted = applySorting(filtered);
+    setSortedAndFilteredEmployees(sorted);
+  }, [searchQuery, originalList, sortType, employeeList]);
+
+  const titleClass = `${
+    pageTitle === "Dashboard"
+      ? styles.banner__wrap__title__home
+      : styles.banner__wrap__title__other
+  }`.trim();
+
   return (
     <>
-      <div className={styles.banner}>{pageTitle}</div>
+      <div className={styles.banner}>
+        <div className={bannerClass}>
+          {pageTitle === "Dashboard" && (
+            <input
+              type="search"
+              placeholder="Search employees..."
+              value={searchQuery}
+              onChange={handleSearchChange}
+              className={styles.banner__search}
+            />
+          )}
+          <p className={titleClass}>{pageTitle}</p>
+          {pageTitle === "Dashboard" && (
+            <Button onClick={sortEmployees}>{sortType}</Button>
+          )}
+        </div>
+      </div>
       <main className={styles.dashboard}>
         <Routes>
           <Route
@@ -99,7 +182,7 @@ const DashBoardContainer = () => {
             element={
               <ViewEmployeesComponent
                 setPageTitle={setPageTitle}
-                employeeList={employeeList}
+                employeeList={sortedAndFilteredEmployees}
               />
             }
           />

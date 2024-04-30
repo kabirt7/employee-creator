@@ -20,4 +20,40 @@
   width: 88vw;
   padding-left: 12vw;
   font-size: 1.3vw;
+  display: flex;
+  justify-content: center;
+
+  &__search {
+    background-color: rgb(245, 245, 245);
+    border: none;
+    font-size: 1.1vw;
+    padding: 1vh 2.5vh;
+    padding-right: 1.5vh;
+    border-radius: 1vw;
+    display: flex;
+    gap: 1.5vh;
+  }
+
+  &__wrap {
+    width: 97%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+
+    &__title {
+      &__home {
+        position: absolute;
+        left: 46%;
+      }
+      &__other {
+        position: absolute;
+        left: 44.7%;
+      }
+    }
+
+    &__centred {
+      justify-content: center;
+    }
+  }
 }

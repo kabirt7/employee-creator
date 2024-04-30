@@ -38,7 +38,7 @@
     }
 
     &__svg:hover {
-      color: rgb(62, 143, 249);
+      color: rgb(0, 67, 155);
     }
   }
 
@@ -49,11 +49,12 @@
 
   &__label {
     font-size: 1.2vw;
-    color: rgb(30, 68, 118);
+    color: black;
   }
 
   &__infoText {
     font-size: 1.2vw;
+    color: rgb(0, 67, 155);
   }
 
   .formData {
@@ -82,21 +83,3 @@
     }
   }
 }
-
-// .modal {
-//   &__wrap {
-//     width: 100vw;
-//     height: 100vh;
-//     position: fixed;
-//     background-color: rgba(0, 0, 0, 0.2);
-//     z-index: 3;
-//     display: flex;
-//     align-items: center;
-//     justify-content: center;
-//   }
-
-//   position: absolute;
-//   background-color: white;
-//   border-radius: 2vw;
-//   z-index: 4;
-// }

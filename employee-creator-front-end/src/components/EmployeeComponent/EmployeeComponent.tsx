@@ -1,7 +1,7 @@
 import { Employee } from "../../services/interfaces";
 import styles from "./EmployeeComponent.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEdit } from "@fortawesome/free-solid-svg-icons";
+import { faEdit, faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setEmployeeModal } from "../../features/modalSlice";
@@ -52,8 +52,22 @@ const EmployeeComponent = ({
           </div>
         </div>
         <div className={styles.employee__infoBox__bottomRow}>
-          <p>{employee.email}</p>
-          <p>{employee.mobileNumber.toString()}</p>
+          <div className={styles.employee__infoBox__bottomRow__wrap}>
+            <FontAwesomeIcon
+              icon={faEnvelope}
+              id="editButton"
+              className={styles.employee__editIcon__image}
+            />
+            <p>{employee.email}</p>
+          </div>
+          <div className={styles.employee__infoBox__bottomRow__wrap}>
+            <FontAwesomeIcon
+              icon={faPhone}
+              id="editButton"
+              className={styles.employee__editIcon__image}
+            />
+            <p>{employee.mobileNumber.toString()}</p>
+          </div>
         </div>
       </div>
       <Link
