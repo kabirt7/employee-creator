@@ -111,6 +111,10 @@ In this project, I will be focussing on:
 ### 14th April
 - finished out hooking up react-hook-form with my project - ready to be integrated with back-end
 
-### 15th April
+### 20th April
 - Completed the Service, Controller & UpdateEmployeDTO classes.
 - Completed the error handling package by adding NotFoundException, ServiceValidationException, GlobalExceptionHandler
+- fleshed out CSS and banner component
+- title updates depending on which route/page
+
+
