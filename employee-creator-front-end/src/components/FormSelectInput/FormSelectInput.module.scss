@@ -1,0 +1,30 @@
+.radio {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+
+  label {
+    font-size: 1.7vh;
+  }
+
+  input[type="radio"] {
+    accent-color: rgb(88, 88, 88) !important;
+  }
+
+  input[type="radio"]:hover {
+    accent-color: rgb(62, 143, 249) !important;
+  }
+
+  &__options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3vh;
+
+    article {
+      display: flex;
+      gap: 1vw;
+      font-size: 2vh;
+    }
+  }
+}

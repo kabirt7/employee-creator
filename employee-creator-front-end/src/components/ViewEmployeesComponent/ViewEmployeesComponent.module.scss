@@ -1,0 +1,21 @@
+.viewEmployees {
+  margin-left: 12vw;
+  margin-top: 8vh;
+  width: 88vw;
+  display: flex;
+  justify-content: center;
+  padding-top: 2vw;
+  margin-bottom: 2vw;
+
+  &__wrap {
+    width: 95%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 2vw;
+  }
+
+  &__wrap:last-child {
+    flex-grow: 0;
+  }
+}

@@ -1,0 +1,93 @@
+version: "3.8"
+
+services:
+  app:
+    build:
+      context: ./employee.creator.back_end
+      dockerfile: Dockerfile
+    ports:
+      - "3000:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/${DB_NAME}
+      SPRING_DATASOURCE_USERNAME: ${DB_USER}
+      SPRING_DATASOURCE_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - .employee-creator-backend/src:/app/src
+      - .employee-creator-backend/pom.xml:/app/pom.xml
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "curl --fail http://localhost:8080/actuator/health || exit 1",
+        ]
+      interval: 10s
+      timeout: 10s
+      retries: 5
+
+  db:
+    image: mysql:latest
+    platform: linux/amd64/v8
+    environment:
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_ROOT_PASSWORD: ${ROOT_PASSWORD}
+    ports:
+      - "3307:3306"
+    volumes:
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./database/mysql-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+
+volumes:
+  mysql-data:
+# version: "3.8"
+
+# services:
+#   mysqldb:
+#     image: mysql:latest
+#     platform: linux/amd64
+#     restart: unless-stopped
+#     env_file: ./.env
+#     environment:
+#       - MYSQL_ROOT_PASSWORD=$MYSQLDB_ROOT_PASSWORD
+#       - MYSQL_DATABASE=$MYSQLDB_DATABASE
+
+#     ports:
+#       - "3307:3306"
+#     volumes:
+#       - db:/var/lib/mysql
+#     healthcheck:
+#       interval: 10s
+#       timeout: 10s
+#       retries: 5
+
+#   app:
+#     depends_on:
+#       - mysqldb
+#     build: ./employee.creator.back_end
+#     restart: on-failure
+#     env_file: ./.env
+#     ports:
+#       - "6868:8080"
+#     environment:
+#       SPRING_DATASOURCE_URL: "jdbc:mysql://mysqldb:3306/employees_database"
+#       SPRING_DATASOURCE_USERNAME: "root"
+#       SPRING_DATASOURCE_PASSWORD: "JOINMASC123"
+#       SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT: "org.hibernate.dialect.MySQL8Dialect"
+#       SPRING_JPA_HIBERNATE_DDL_AUTO: "update"
+#     volumes:
+#       - .m2:/root/.m2
+#     stdin_open: true
+#     tty: true
+#     healthcheck:
+#       interval: 10s
+#       timeout: 10s
+#       retries: 5
+
+# volumes:
+#   db:
