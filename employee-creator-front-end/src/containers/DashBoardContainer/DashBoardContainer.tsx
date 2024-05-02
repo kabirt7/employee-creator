@@ -17,6 +17,7 @@ import { RootState } from "../../store/store";
 import { clearEmployeeModal } from "../../features/modalSlice";
 import { setToast } from "../../features/toastSlice";
 import Button from "../../components/Button/Button";
+import Home from "../../components/Home/Home";
 
 const DashBoardContainer = () => {
   const [pageTitle, setPageTitle] = useState("Dashboard");
@@ -196,6 +197,7 @@ const DashBoardContainer = () => {
               />
             }
           />
+          <Route path="/home" element={<Home setPageTitle={setPageTitle} />} />
           <Route
             path="/edit/:id"
             element={

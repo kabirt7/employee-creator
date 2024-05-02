@@ -1,8 +1,23 @@
-# FROM maven:3.8.2-jdk-8 # for Java 8
-FROM maven:3.8.5-openjdk-17
+# Stage 1: Build the application
+FROM maven:3.8.5-openjdk-17 as builder
+WORKDIR /build
+COPY pom.xml .
+COPY src src
+# Run Maven build (skip unit tests with -DskipTests)
+RUN mvn clean package -DskipTests
 
-WORKDIR /employee.creator.back_end
-COPY . .
-RUN mvn clean install
+# Stage 2: Setup the runtime container
+FROM openjdk:17
+WORKDIR /app
+# Copy only the built JAR from the builder stage
+COPY --from=builder /build/target/*.jar app.jar
+ENTRYPOINT ["java", "-jar", "app.jar"]
 
-CMD mvn spring-boot:run
+
+
+
+# # WORKDIR /employee.creator.back_end
+# COPY . .
+# RUN mvn clean install
+
+# CMD mvn spring-boot:run

@@ -6,7 +6,6 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import io.nology.employee.creator.back_end.employee.Employee.ContractType;
 import io.nology.employee.creator.back_end.employee.Employee.WorkType;
-import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
