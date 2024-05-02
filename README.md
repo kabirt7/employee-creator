@@ -117,4 +117,10 @@ In this project, I will be focussing on:
 - fleshed out CSS and banner component
 - title updates depending on which route/page
 
+### 23rd April
+- Added zod error handling
+- this required extra handling for number inputs
 
+### 31st April
+- finally fixed the issues I was having containerising my Back-end & Database
+  
