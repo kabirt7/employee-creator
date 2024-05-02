@@ -1,0 +1,85 @@
+.modal {
+  &__wrap {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+
+  position: relative;
+  width: 40%;
+  background-color: white;
+  border-radius: 2vw;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 2vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+
+  .closeButton {
+    align-self: flex-end;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    position: absolute;
+    top: 2vw;
+    right: 2vw;
+
+    &__svg {
+      width: 3vh;
+      height: 3vh;
+      padding: 0;
+    }
+
+    &__svg:hover {
+      color: rgb(0, 67, 155);
+    }
+  }
+
+  &__title {
+    font-size: 2vw;
+    font-weight: 100;
+  }
+
+  &__label {
+    font-size: 1.2vw;
+    color: black;
+  }
+
+  &__infoText {
+    font-size: 1.2vw;
+    color: rgb(0, 67, 155);
+  }
+
+  .formData {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    h2 {
+      text-align: center;
+      margin-bottom: 2vw;
+    }
+
+    .infoBlock {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1vw;
+
+      label {
+        font-weight: bold;
+      }
+
+      div {
+        text-align: right;
+      }
+    }
+  }
+}

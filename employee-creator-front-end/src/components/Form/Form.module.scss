@@ -1,0 +1,47 @@
+.form {
+  height: auto;
+  margin-left: 12vw;
+  margin-top: 8vh;
+  width: 88vw;
+  display: flex;
+  justify-content: center;
+  padding-top: 5vh;
+  margin-bottom: 5vh;
+
+  &__page {
+    width: 60%;
+    background-color: white;
+    border-radius: 2vw;
+    display: flex;
+    justify-content: center;
+    overflow: scroll;
+
+    img {
+      height: 5vw;
+      width: 5vw;
+      align-self: center;
+    }
+  }
+
+  &__wrap {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 3vh 0;
+    gap: 2vh;
+  }
+
+  &__names {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 2vw;
+  }
+}
+
+.error {
+  color: rgb(110, 0, 0);
+}

@@ -1,0 +1,106 @@
+.employee {
+  min-width: 30%;
+  position: relative;
+  flex: 1;
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: rgb(255, 255, 255);
+  flex-direction: column;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 1vw;
+  cursor: pointer;
+
+  img {
+    width: 12vw;
+    height: 12vw;
+    object-fit: cover;
+    object-position: top;
+  }
+
+  &__headerBox {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h2 {
+      font-size: 2vw;
+    }
+    h3 {
+      color: rgb(62, 143, 249);
+      font-size: 1.5vw;
+      font-weight: 100;
+    }
+  }
+
+  p {
+    font-size: 1.1vw;
+  }
+
+  &__infoBox {
+    height: 20%;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+    background-color: rgb(242, 246, 250);
+    border: 0.2vh solid rgb(232, 241, 250);
+    padding: 0.5vw 1vw;
+    border-radius: 0.3vw;
+
+    &__topRow {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+
+      &__dateHired {
+        display: flex;
+        align-items: flex-end;
+        flex-direction: column;
+      }
+    }
+
+    &__bottomRow {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.25vw;
+
+      &__wrap {
+        display: flex;
+        gap: 0.5vw;
+      }
+    }
+  }
+
+  &__last {
+    flex: 0;
+    min-width: 31.75%;
+  }
+
+  &__editIcon {
+    position: absolute;
+    top: 1vw;
+    right: 1.2vw;
+    height: 1.2vw;
+    color: black;
+    z-index: 0;
+
+    &__image {
+      width: 1.2vw;
+      height: 1.2vw;
+    }
+  }
+
+  &__editIcon:hover {
+    color: rgb(62, 143, 249);
+  }
+}
+
+.infoTitle {
+  font-size: 0.9vw !important;
+  color: rgb(62, 143, 249);
+}
