@@ -25,60 +25,6 @@ The site should be responsive.
 - API has: create employee, list of existing employees, delete employee
 - Front-end has: View Employee List (with delete option), Add Employee Form. Routed.
 
-## Redux
-
-- React Redux seems to function similarly to useContext React Hook. The application will still be built in TSX with vite. I think I'll need to use Middleware with RR?
-- users a new concept of reducers to mutate the state of the Redux 'client-side DB'
-- "Context does not automatically optimize re-renders in the same way Redux does. When using Context, components that consume the context will re-render whenever the context value changes, regardless of whether the relevant state actually changed. Redux, on the other hand, employs optimizations such as shallow comparisons to only trigger re-renders when necessary, which can lead to better performance in larger applications."
-
-IMPLEMENTATION
-1. ``` install @reduxjs/toolkit react-redux ```
-2. Configure store in store.js file. Create global store object. Register your reducers
-```js
-export const store = configureStore({
-reducer: {
-pizza: pizzaReducer,
-},
-});
-```
-3. 'Provide' the store in App.jsx in a similar way to Context Hook
-```jsx
-<Provider store={store}>
-<App />
-</Provider>
-```
-4. Create a 'slice' with defined reducer logic. Reducers take old state and an action and then define logic required to change the state
-```js
-export const pizzaSlice = createSlice({
-name: 'pizza',
-reducers: {
- toggleGluten: (state) => {
-state.gluten = !state.gluten
-},
-addTopping: (state, action) => {
-state.toppings = [...state.toppings, action.payload]
-},
-},
-})
-
-export const {toggleGluten, addTopping} = pizzaSlice.actions;
-
-export default pizzaSlice.reducer;
-```
-5. Add them into a UI component. Need to define useDispatch hook to be able to update the state. DevTools exist for visualisation and debugging.
-```jsx
-const pizza = useSelector(state => state.pizza);
-const dispatch = useDispatch();
-
-return (
-<>
-<h1>Pizza</h1>
-
-{pizza.toppings.map etc...
-
-<button onClick={() => dispatch(addTopping('pepperoni))}
-```
-
 - context doesn't inherently enfore uni-directional data flow while RR does
 - this just means that when child componenents want to change state they can't do it directly but will notify the Redux store through dispatching an action. The Store will then update the state using reducers and pass down to children through props. Each reducer handles a specific slice of the application state. It will check whether a re-render is necessary instead of automatically doing it like the useContext hook.
 - note that useState hooks' states will operate independently to that of Redux Store state
@@ -86,9 +32,18 @@ return (
 ## Hosting
 
 Front-end hosted link (netlify): https://superlative-cocada-2236c6.netlify.app
+- I chose to use Netlify for the the front-end because I wanted to practice configuring Netlify to host from an internal directory
+- This is the first time I've achieved this
+- The key was to make sure a dist file is being created 
 
 Springboot/mySQL back-end hosted link (Docker Container on AWS): coming soon
-  
+- Not going to lie this has been an uphill battle but one with lots of new concepts learned
+- I struggled with containerising the SB (Maven) back-end and the mySQL Database together
+- The key was to get the correct build logic in the docker-compose and Dockerfile
+- Another important concept was that off the local and hosted ports
+- The server needed to be set to 3000:8080 and the database was set to 3007:3006
+- Currently, the Docker container has been made - I just need to connect it to an EC2 instance
+
 ## Planning 
 
 In this project, I will be focussing on: 
@@ -128,5 +83,62 @@ In this project, I will be focussing on:
 - this required extra handling for number inputs
 
 ### 31st April
+- Added sort and search bar functionality to the dashboard
+- Their state containing the updated Employee List needed to be handled together to get them to work syncronously 
+- also added in Home Page tab which will be used later down the track for authentication
+
+### 2nd May
 - finally fixed the issues I was having containerising my Back-end & Database
-  
+- successfully containerised the back-end (server and database_
+  ```yml
+version: "3.8"
+
+services:
+  app:
+    build:
+      context: ./employee.creator.back_end
+      dockerfile: Dockerfile
+    ports:
+      - "3000:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/${DB_NAME}
+      SPRING_DATASOURCE_USERNAME: ${DB_USER}
+      SPRING_DATASOURCE_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - ./employee.creator.back_end/src:/app/src
+      - ./employee.creator.back_end/pom.xml:/app/pom.xml
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "curl --fail http://localhost:8080/actuator/health || exit 1",
+        ]
+      interval: 10s
+      timeout: 10s
+      retries: 5
+
+  db:
+    image: mysql:latest
+    platform: linux/amd64/v8
+    environment:
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_ROOT_PASSWORD: ${ROOT_PASSWORD}
+    ports:
+      - "3307:3306"
+    volumes:
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./database/mysql-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+
+volumes:
+  mysql-data:
+```
+- this was how I got my yml to work
+- interestingly it still worked when I had the incorrect config for the app volumes but I have since updated the file and container
+- https://us-east-1.console.aws.amazon.com/ec2/home?region=us-east-1#Instances:
