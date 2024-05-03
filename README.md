@@ -1,4 +1,8 @@
-# employee-creator
+# Employee Creator/Manager
+
+## Demo
+
+![demo of project](demo.gif)
 
 ## MVP / Recommendations
 
