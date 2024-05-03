@@ -48,6 +48,13 @@ Springboot/mySQL back-end hosted link (Docker Container on AWS): coming soon
 - The server needed to be set to 3000:8080 and the database was set to 3007:3006
 - Currently, the Docker container has been made - I just need to connect it to an EC2 instance
 
+## Future Changes
+- Currently, the Home Page does not have any function
+- It will be updated soon to allow for log-in
+- Depending on the account, the user will/wont be able to access the Employee Info Modal
+
+## Features
+
 ## Planning 
 
 In this project, I will be focussing on: 
