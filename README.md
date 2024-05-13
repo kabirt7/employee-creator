@@ -163,3 +163,5 @@ volumes:
 - Also, when using docker-compose and a Dockerfile configured image, I need to push the docker image to the ECR separately for EB to work
 - This will then give me a URI which I can use to make up the Task Definition which is the error thrown in the EB console
 - Also, if the region you're accessing the AWS console is not the same as what you configured the EB/EC2/whatever instances then they won't show up
+- Lol so after all that it looks like to make my URIs with separate tags I need to push them from docker files not docker compose or change how my Docker config works which i do not want to do
+- So, I'm going to use an EC2 instance instead. I'll download docker, docker compose etc then make my own image and it's essentially like running it locally but from the EC2 instance
