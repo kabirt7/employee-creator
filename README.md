@@ -156,7 +156,10 @@ volumes:
 - https://us-east-1.console.aws.amazon.com/ec2/home?region=us-east-1#Instances:
 
 ## 13th May
-- I've been working on getting this project hosted lately
 - I was quite sick last week and didn't get a lot of work done unfortunately
 - I'm working on hosting with Amazon EB
-- There were some issues I worked through with the specific permissions necessary 
+- There were some issues I worked through with the specific permissions necessary
+- It turns out I needed to use an IAM user with necessary permissions for EB as EB performs a lot of functions sycronously
+- Also, when using docker-compose and a Dockerfile configured image, I need to push the docker image to the ECR separately for EB to work
+- This will then give me a URI which I can use to make up the Task Definition which is the error thrown in the EB console
+- Also, if the region you're accessing the AWS console is not the same as what you configured the EB/EC2/whatever instances then they won't show up
