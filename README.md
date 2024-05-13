@@ -44,13 +44,13 @@ Springboot/mySQL back-end hosted link (Docker Container on AWS): coming soon
 - Not going to lie this has been an uphill battle but one with lots of new concepts learned
 - I struggled with containerising the SB (Maven) back-end and the mySQL Database together
 - The key was to get the correct build logic in the docker-compose and Dockerfile
-- Another important concept was that off the local and hosted ports
+- Another important concept was that of the local and hosted ports
 - The server needed to be set to 3000:8080 and the database was set to 3007:3006
 - Currently, the Docker container has been made - I just need to connect it to an EC2 instance
 
 ## Future Changes
 - Currently, the Home Page does not have any function
-- It will be updated soon to allow for log-in
+- It will be updated soon to allow for authentication
 - Depending on the account, the user will/wont be able to access the Employee Info Modal
 
 ## Features
@@ -59,7 +59,8 @@ Springboot/mySQL back-end hosted link (Docker Container on AWS): coming soon
 
 In this project, I will be focussing on: 
 - ensuring my Components are resuable and that they do not handle data/logic themselves (this should be handled by the parent Containers).
-- Using eNums for states that determine rendering. Extensive error handling for the forms.
+- Using eNums for states that determine rendering.
+- Extensive error handling for the forms.
 - Implementing React Redux instead of the useContext Hook.
 - Extensive error handling on the back-end.
 - Testing on both sides.
