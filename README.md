@@ -38,7 +38,7 @@ The site should be responsive.
 Front-end hosted link (netlify): https://superlative-cocada-2236c6.netlify.app
 - I chose to use Netlify for the the front-end because I wanted to practice configuring Netlify to host from an internal directory
 - This is the first time I've achieved this
-- The key was to make sure a dist file is being created 
+- The key was to make sure a dist folder is being created 
 
 Springboot/mySQL back-end hosted link (Docker Container on AWS): coming soon
 - Not going to lie this has been an uphill battle but one with lots of new concepts learned
