@@ -22,20 +22,7 @@ jobs:
           java-version: '17'
 
       - name: Build with Maven
-        run:  |
-              mvn -f employee.creator.back_end clean install -e
-              echo "=== Contents of target directory ==="
-              ls -al ${GITHUB_WORKSPACE}/to_do.backend/target
-
-      - name: Run tests with Maven
-        run: |
-          mvn -f employee.creator.back_end test -e -X || true
-          echo "=== Surefire Reports ==="
-          if [ -d employee.creator.back_end/target/surefire-reports ]; then
-            cat employee.creator.back_end/target/surefire-reports/*.txt
-          else
-            echo "Surefire reports directory does not exist."
-          fi
+        run:  mvn -f employee.creator.back_end clean install -e -X
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
@@ -71,5 +58,5 @@ jobs:
         with:
           app-name: 'emplo-demo'
           slot-name: 'Production'
-          package: '/home/runner/work/employee-creator/employee.creator.back_end-0.0.1-SNAPSHOT.jar'
+          package: '/home/runner/work/employee-creator/employee-creator/employee.creator.back_end-0.0.1-SNAPSHOT.jar'
           
