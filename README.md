@@ -18,17 +18,7 @@ We need a web application to create, list, modify and delete employees. The appl
 ## Hosting
 
 Front-end hosted link (netlify): https://superlative-cocada-2236c6.netlify.app
-- I chose to use Netlify for the the front-end because I wanted to practice configuring Netlify to host from an internal directory
-- This is the first time I've achieved this
-- The key was to make sure a dist folder is being created 
-
-Springboot/mySQL back-end hosted link (Docker Container on AWS): coming soon
-- Not going to lie this has been an uphill battle but one with lots of new concepts learned
-- I struggled with containerising the SB (Maven) back-end and the mySQL Database together
-- The key was to get the correct build logic in the docker-compose and Dockerfile
-- Another important concept was that of the local and hosted ports
-- The server needed to be set to 3000:8080 and the database was set to 3007:3006
-- Currently, the Docker container has been made - I just need to connect it to an EC2 instance
+Back-end not yet live, coming soon
 
 ## Future Changes
 - Currently, the Home Page does not have any function
