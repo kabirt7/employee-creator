@@ -23,9 +23,19 @@ jobs:
 
       - name: Build with Maven
         run:  |
-              mvn -f employee.creator.back_end clean install
+              mvn -f employee.creator.back_end clean install -e
               echo "=== Contents of target directory ==="
               ls -al ${GITHUB_WORKSPACE}/to_do.backend/target
+
+      - name: Run tests with Maven
+        run: |
+          mvn -f employee.creator.back_end test -e
+
+      - name: Upload test reports
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-reports
+          path: employee.creator.back_end/target/surefire-reports/    
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
