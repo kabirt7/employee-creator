@@ -51,6 +51,16 @@
   			<artifactId>modelmapper</artifactId>
   			<version>3.0.0</version>
 		</dependency>
+		<dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+         <dependency>
+        <groupId>com.microsoft.sqlserver</groupId>
+        <artifactId>mssql-jdbc</artifactId>
+        <version>10.2.1.jre17</version> <!-- Ensure the version matches your Java version -->
+    </dependency>
 
 	</dependencies>
 

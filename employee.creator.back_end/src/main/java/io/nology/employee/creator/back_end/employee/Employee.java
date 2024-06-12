@@ -10,9 +10,13 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "employees")
+@AllArgsConstructor
+@NoArgsConstructor
 public class Employee {
 	
     @Id
@@ -50,6 +54,7 @@ public class Employee {
 	@Column
     private LocalDate startDate;
 	// look into date type from jpa
+	//hi
 	
 	@Enumerated(EnumType.STRING)
 	@Column
