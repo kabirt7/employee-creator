@@ -125,7 +125,6 @@ volumes:
 ```
 - this was how I got my yml to work
 - interestingly it still worked when I had the incorrect config for the app volumes but I have since updated the file and container
-- https://us-east-1.console.aws.amazon.com/ec2/home?region=us-east-1#Instances:
 
 ## 13th June
 * Hosted using Azure
