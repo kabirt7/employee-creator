@@ -17,7 +17,7 @@ We need a web application to create, list, modify and delete employees. The appl
 
 ## Hosting
 
-(Netlify & Azure): https://superlative-cocada-2236c6.netlify.app
+(Netlify & Azure): https://superlative-cocada-2236c6.netlify.app ** APP IS NO LONGER LIVE DUE TO BUDGETARY ISSUES, PLEASE REFER TO THE DEMO. APOLOGIES **
 
 ## Future Changes
 - Currently, the Home Page does not have any function
