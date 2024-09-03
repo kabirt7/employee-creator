@@ -126,10 +126,10 @@ volumes:
 - this was how I got my yml to work
 - interestingly it still worked when I had the incorrect config for the app volumes but I have since updated the file and container
 
-## 13th June
+### 13th June
 * Hosted using Azure
 
-## 4th September
+### 4th September
 * Planning adding in E2E and Service Unit Testing to the backend
 * React Test Library to the front-end
 * Make sure to consider edge cases
