@@ -27,6 +27,8 @@ jobs:
 
       - name: Build with Maven
         run: mvn clean install
+        working-directory: ./employee.creator.back_end
 
       - name: Run tests
         run: mvn test
+        working-directory: ./employee.creator.back_end
