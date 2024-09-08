@@ -32,3 +32,7 @@ jobs:
       - name: Run tests
         run: mvn test
         working-directory: ./employee.creator.back_end
+
+      - name: Run tests with debug
+        run: mvn -X test
+        working-directory: ./employee.creator.back_end
