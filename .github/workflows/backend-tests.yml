@@ -21,6 +21,10 @@ jobs:
           distribution: temurin
           java-version: 21
 
+      - name: Navigate to Backend Tests directory
+        working-directory: ./employee.creator.back_end
+        run: echo "Moved to Backend Tests directory"
+
       - name: Build with Maven
         run: mvn clean install
 
