@@ -129,7 +129,9 @@ volumes:
 ### 13th June
 * Hosted using Azure
 
-### 4th September
+### 6th September
 * Planning adding in E2E and Service Unit Testing to the backend
-* React Test Library to the front-end
-* Make sure to consider edge cases
+
+### 8th September
+* Added in Back-end Testing
+* Added GitHub Action
