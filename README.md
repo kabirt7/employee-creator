@@ -4,27 +4,16 @@
 
 ![demo of project](demo.gif)
 
-## MVP / Recommendations
+## Planning 
 
-We need a web application to create, list, modify and delete employees. The application should consist of a spring RESTful API and a React Typescript frontend. The schema for the employee is left to the criteria of the candidate.
-
-- API has: create employee, list of existing employees, delete employee
-- Front-end has: View Employee List (with delete option), Add Employee Form. Routed.
-
-- context doesn't inherently enfore uni-directional data flow while RR does
-- this just means that when child componenents want to change state they can't do it directly but will notify the Redux store through dispatching an action. The Store will then update the state using reducers and pass down to children through props. Each reducer handles a specific slice of the application state. It will check whether a re-render is necessary instead of automatically doing it like the useContext hook.
-- note that useState hooks' states will operate independently to that of Redux Store state
-
-## Hosting
-
-(Netlify & Azure): https://superlative-cocada-2236c6.netlify.app ** APP IS NO LONGER LIVE DUE TO BUDGETARY ISSUES, PLEASE REFER TO THE DEMO. APOLOGIES **
-
-## Future Changes
-- Currently, the Home Page does not have any function
-- It will be updated soon to allow for authentication
-- Depending on the account, the user will/wont be able to access the Employee Info Modal
-
-## Features
+In this project, I will be focussing on: 
+- ensuring my Components are resuable and that they do not handle data/logic themselves (this should be handled by the parent Containers).
+- Using eNums for states that determine rendering.
+- Extensive error handling for the forms.
+- Implementing React Redux instead of the useContext Hook.
+- Extensive error handling on the back-end.
+- Testing on both sides.
+- Logical relationships between tables/columns in mySQL
 
 ## Planning 
 
@@ -36,6 +25,26 @@ In this project, I will be focussing on:
 - Extensive error handling on the back-end.
 - Testing on both sides.
 - Logical relationships between tables/columns in mySQL
+
+## MVP / Recommendations
+
+A web application to create, list, modify and delete employees. The application should consist of a spring RESTful API and a React Typescript frontend. The schema for the employee is left to the criteria of the candidate.
+
+## Hosting
+
+(Netlify & Azure): https://superlative-cocada-2236c6.netlify.app ** APP IS NO LONGER LIVE DUE TO BUDGETARY ISSUES, PLEASE REFER TO THE DEMO. APOLOGIES **
+
+## Features
+* Home Page
+* Dashboard - includes Employee Component display alongside sorting options. When clicked the Employees display more info
+* Edit Employee Form - available on every employee Component. Pre fills the Employee info and displays the Edit persion of the Form Component
+* Add Employee Form - available through the vertical navbar. Contains custom data inputs.
+* Both Forms - custom zod error handling 
+
+## Future Changes
+- Currently, the Home Page does not have any function
+- It will be updated soon to allow for authentication
+- Depending on the account, the user will/wont be able to access the Employee Info Modal
 
 ## Change Log
 
