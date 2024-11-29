@@ -68,7 +68,7 @@ public class Employee {
 	public enum WorkType {
 		FULL_TIME,
 		PART_TIME
-	}...
+	}
 ```
 ### 12th April
 - iniialised the files for front and back end - made all components and classes
@@ -76,6 +76,29 @@ public class Employee {
 
 ### 14th April
 - finished out hooking up react-hook-form with my project - ready to be integrated with back-end
+- UseForm and SubmitHandler are the what I needed to use
+```js
+ const {
+    handleSubmit,
+    register,
+    reset,
+    formState: { errors },
+  } = useForm<Employee>({
+    resolver: zodResolver(schema),
+  });
+```
+```js
+const submitHandler: SubmitHandler<Employee> = (data) => {
+    onSubmit(data, id);
+  };
+...
+  return (
+<form
+        className={styles.form__page}
+        onSubmit={handleSubmit(submitHandler)}
+      >
+)
+```
 
 ### 20th April
 - Completed the Service, Controller & UpdateEmployeDTO classes.
