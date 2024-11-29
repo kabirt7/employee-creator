@@ -94,7 +94,7 @@ public class Employee {
 
 ### 2nd May
 - finally fixed the issues I was having containerising my Back-end & Database
-- successfully containerised the back-end (server and database_
+- successfully containerised the back-end (server and database)
 
 ```yml
 version: "3.8"
@@ -150,6 +150,7 @@ volumes:
 
 ### 13th June
 * Hosted using Azure
+- I needed to add @AllArgsConstructor and @NoArgsConstructor to the EmployeeEntity
 
 ### 6th September
 * Planning adding in E2E and Service Unit Testing to the backend
