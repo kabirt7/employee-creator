@@ -51,12 +51,25 @@ A web application to create, list, modify and delete employees. The application 
 ### 10th April
 - set up front-end and back-end files
 - imported the dependencies: Spring Web, Validation I/O, Spring Testing, Spring Data JPA, MySQL Driver, Spring Devtools.
-- finalised planning (file in root folder)
 
 ### 11th April
 - Fleshed out front-end: basic form of all components complete, except the form which is almost done (routes added)
 - Added the Employee entity including its eNums to the back-end
-
+```java
+@Entity
+@Table(name = "employees")
+public class Employee {
+...
+	public enum ContractType {
+		PERMANENT,
+		CONTRACT
+	}
+	
+	public enum WorkType {
+		FULL_TIME,
+		PART_TIME
+	}...
+```
 ### 12th April
 - iniialised the files for front and back end - made all components and classes
 - finished off the planning
