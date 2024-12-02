@@ -1,0 +1,8 @@
+CREATE DATABASE IF NOT EXISTS my_database;
+USE my_database;
+
+CREATE TABLE IF NOT EXISTS employees (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255),
+    email VARCHAR(255)
+);
