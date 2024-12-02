@@ -1,4 +1,4 @@
-name: Build and deploy JAR app to Azure Web App - emploApp
+name: Build and deploy JAR app to Azure Web App - emplo-app
 
 on:
   push:
@@ -53,7 +53,7 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'emploApp'
+          app-name: 'emplo-app'
           slot-name: 'production'
           package: '/home/runner/work/employee-creator/employee-creator/employee.creator.back_end-0.0.1-SNAPSHOT.jar'
           
