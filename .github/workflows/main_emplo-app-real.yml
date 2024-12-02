@@ -50,4 +50,4 @@ jobs:
           app-name: 'emplo-app-real'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_12CFF5A897B74E00998F5F2C26432EA8 }}
-          package: '/home/runner/work/employee-creator/employee-creator/employee.creator.back_end-0.0.1-SNAPSHOT.jar'
+          package: '/home/runner/work/employee-creator/employee.creator.back_end-0.0.1-SNAPSHOT.jar'
