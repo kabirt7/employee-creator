@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Employee } from "./interfaces";
 
-const API_URL = "http://localhost:8081/employees";
+const API_URL = "https://emplo-app-real-dteveeftfnegg0a2.australiasoutheast-01.azurewebsites.net/employees";
 
 export const getAllEmployees = async (): Promise<Employee[]> => {
   try {
