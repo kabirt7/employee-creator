@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    url: jdbc:sqlserver://kabirt.database.windows.net:1433;database=emplo-db;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
+    username: kabirt
+    password: password@123
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      dialect: org.hibernate.dialect.SQLServer2012Dialect
+
+server:
+  port: 8080
