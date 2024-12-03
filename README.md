@@ -101,9 +101,18 @@ const submitHandler: SubmitHandler<Employee> = (data) => {
 ### 23rd April
 - Added zod error handling
 - this required extra handling for number inputs
+```jsx
+const schema = z.object({
+  firstName: z.string().min(1, "First name is required"),...
+```
 
 ### 31st April
-- Added sort and search bar functionality to the dashboard
+- Added sort and search bar functionality using localCompare
+```jsx
+if (sortType === "Name") {
+      return [...list].sort((a, b) => a.firstName.localeCompare(b.firstName));
+}
+```
 - Their state containing the updated Employee List needed to be handled together to get them to work syncronously 
 - also added in Home Page tab which will be used later down the track for authentication
 
@@ -115,5 +124,4 @@ const submitHandler: SubmitHandler<Employee> = (data) => {
 * Planning adding in E2E and Service Unit Testing to the backend
 
 ### 8th September
-* Added in Back-end Testing
-* Added GitHub Action
+* Added in Back-end Testing GitHub Action
