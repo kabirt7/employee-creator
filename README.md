@@ -32,7 +32,7 @@ A web application to create, list, modify and delete employees. The application 
 
 ## Hosting
 
-(Netlify & Azure): https://superlative-cocada-2236c6.netlify.app ** APP IS NO LONGER LIVE DUE TO BUDGETARY ISSUES, PLEASE REFER TO THE DEMO. APOLOGIES **
+(Netlify & Azure): https://superlative-cocada-2236c6.netlify.app 
 
 ## Features
 * Home Page
