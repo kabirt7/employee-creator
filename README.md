@@ -22,6 +22,8 @@ A web application to create, list, modify and delete employees. The application 
 ## Hosting
 
 (Netlify & Azure): https://superlative-cocada-2236c6.netlify.app 
+* AzureSQL Instance
+* Azure Web App Instance
 
 ## Features
 * Home Page
