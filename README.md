@@ -15,17 +15,6 @@ In this project, I will be focussing on:
 - Testing on both sides.
 - Logical relationships between tables/columns in mySQL
 
-## Planning 
-
-In this project, I will be focussing on: 
-- ensuring my Components are resuable and that they do not handle data/logic themselves (this should be handled by the parent Containers).
-- Using eNums for states that determine rendering.
-- Extensive error handling for the forms.
-- Implementing React Redux instead of the useContext Hook.
-- Extensive error handling on the back-end.
-- Testing on both sides.
-- Logical relationships between tables/columns in mySQL
-
 ## MVP / Recommendations
 
 A web application to create, list, modify and delete employees. The application should consist of a spring RESTful API and a React Typescript frontend. The schema for the employee is left to the criteria of the candidate.
